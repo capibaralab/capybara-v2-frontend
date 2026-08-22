@@ -1,0 +1,381 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --bg-raised: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --danger: #dc2626;
+  --danger-bg: rgba(220, 38, 38, 0.1);
+  --success: #16a34a;
+  --success-bg: rgba(22, 163, 74, 0.12);
+  --warning: #d97706;
+  --warning-bg: rgba(217, 119, 6, 0.12);
+
+  /* Secondary brand palette — red is the primary action color (see .cta-button /
+     .form-theme-red); yellow/teal/blue/purple are accents for categorical identity
+     (status badges, chart series) and decorative accents, never body text or
+     large fills. The raw hexes are brand-mandated and too light for direct
+     on-surface contrast, so each has an "-ink" variant (dark, for text/icons on
+     a light tint) alongside the raw tone (for borders/backgrounds/dark-mode text). */
+  --brand-red: #fe554e;
+  --brand-red-bg: rgba(254, 85, 78, 0.12);
+  --brand-red-border: rgba(254, 85, 78, 0.5);
+  --brand-yellow: #ffd433;
+  --brand-yellow-ink: #8a6d00;
+  --brand-yellow-bg: rgba(255, 212, 51, 0.22);
+  --brand-teal: #60ddc8;
+  --brand-teal-ink: #0f7a68;
+  --brand-teal-bg: rgba(96, 221, 200, 0.2);
+  --brand-blue: #2563eb;
+  --brand-blue-bg: rgba(37, 99, 235, 0.12);
+  --brand-purple: #d893fb;
+  --brand-purple-ink: #8a3fc9;
+  --brand-purple-bg: rgba(216, 147, 251, 0.18);
+
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  font: 16px/145% var(--sans);
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --bg-raised: #1c1d24;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --danger: #f87171;
+    --danger-bg: rgba(248, 113, 113, 0.15);
+    --success: #4ade80;
+    --success-bg: rgba(74, 222, 128, 0.15);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251, 191, 36, 0.15);
+
+    /* On a dark surface the raw brand tones read fine as text/icons directly
+       (validated: all 4 clear 3:1 against the dark surface) — no separate ink needed. */
+    --brand-red: #ff6f6a;
+    --brand-red-bg: rgba(255, 111, 106, 0.18);
+    --brand-red-border: rgba(255, 111, 106, 0.5);
+    --brand-yellow: #ffd433;
+    --brand-yellow-ink: #ffd433;
+    --brand-yellow-bg: rgba(255, 212, 51, 0.16);
+    --brand-teal: #60ddc8;
+    --brand-teal-ink: #60ddc8;
+    --brand-teal-bg: rgba(96, 221, 200, 0.16);
+    --brand-blue: #60a5fa;
+    --brand-blue-bg: rgba(96, 165, 250, 0.16);
+    --brand-purple: #d893fb;
+    --brand-purple-ink: #d893fb;
+    --brand-purple-bg: rgba(216, 147, 251, 0.16);
+
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#app {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--heading);
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 8px;
+}
+
+h1 {
+  font-size: 40px;
+  letter-spacing: -0.8px;
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 18px;
+}
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 20px 16px 48px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+}
+
+/* Buttons */
+.btn {
+  font: inherit;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: opacity 0.15s, box-shadow 0.15s;
+  display: inline-block;
+}
+/* .btn is also applied to RouterLink-rendered <a> tags, which carry a browser-default
+   underline across all link states — override each state explicitly rather than relying
+   on cascade order against the UA stylesheet. */
+.btn,
+.btn:link,
+.btn:visited,
+.btn:hover,
+.btn:focus,
+.btn:active {
+  text-decoration: none;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: #ec4899;
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+  box-shadow: var(--shadow);
+}
+.btn-secondary {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text-h);
+}
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--accent-border);
+}
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 13px;
+}
+.cta-button.btn-primary {
+  background: #2563eb;
+  color: #fff;
+  border-color: transparent;
+}
+.btn-create.btn-primary {
+  background: var(--brand-red);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* Cards */
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+  white-space: nowrap;
+  background: var(--code-bg);
+  color: var(--text);
+}
+/* Status badges use the secondary brand palette so each coarse status reads as its own
+   color at a glance: pending/in-flight = yellow, live/approved = teal, cancelled/declined =
+   red, completed = blue. */
+.badge-processing,
+.badge-recommendations_ready,
+.badge-awaiting_approval,
+.badge-pending {
+  background: var(--brand-yellow-bg);
+  color: var(--brand-yellow-ink);
+}
+.badge-live,
+.badge-approved {
+  background: var(--brand-teal-bg);
+  color: var(--brand-teal-ink);
+}
+.badge-declined,
+.badge-cancelled {
+  background: var(--brand-red-bg);
+  color: var(--brand-red);
+}
+.badge-completed {
+  background: var(--brand-blue-bg);
+  color: var(--brand-blue);
+}
+
+/* Form fields */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 22px;
+  text-align: left;
+}
+.field label,
+.field-label {
+  font-weight: 600;
+  color: var(--text-h);
+  font-size: 14px;
+}
+.field .hint {
+  font-size: 13px;
+  color: var(--text);
+}
+.field .error {
+  color: var(--danger);
+  font-size: 13px;
+}
+input[type='text'],
+input[type='url'],
+input[type='password'],
+input[type='number'],
+input[type='file'],
+textarea,
+select {
+  font: inherit;
+  font-size: 15px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-h);
+  width: 100%;
+}
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+input.has-error,
+textarea.has-error {
+  border-color: var(--danger);
+}
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.input-prefix-group {
+  display: flex;
+  align-items: stretch;
+}
+.input-prefix-group .prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  background: var(--code-bg);
+  color: var(--text);
+  font-size: 15px;
+}
+.input-prefix-group input {
+  border-radius: 0 8px 8px 0;
+}
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+  background: var(--bg);
+  color: var(--text-h);
+}
+.chip.selected {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Stepper */
+.stepper {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.stepper .step {
+  font-size: 13px;
+  color: var(--text);
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+.stepper .step.active {
+  color: var(--accent);
+  font-weight: 700;
+  border-bottom-color: var(--accent);
+}
+.stepper .step.done {
+  color: var(--text-h);
+}
+.stepper .step.done::after {
+  content: ' ✓';
+}
+
+.step-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+}
